@@ -5,6 +5,8 @@ import '../database/note.dart';
 import '../database/note_provider.dart';
 import 'package:provider/provider.dart';
 
+/// Главный экран, способный менять свою структуру
+/// по ходу дела (потому что [StatefulWidget])
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -13,6 +15,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  // Костыль, обновляет состояние экрана для того,
+  // чтобы показать новые объекты, созданные пользователем
+  // (при повторном открытии приложение забывает,
+  // что делал пользователь, но БД помнит, приходится помогать вручную)
   @override
   void initState() {
     Future.delayed(Duration(seconds: 1), _v);
@@ -34,9 +40,8 @@ class _HomeState extends State<Home> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => AddNote())
-          );
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => AddNote()));
         },
         elevation: 0,
         focusElevation: 0,
@@ -46,7 +51,6 @@ class _HomeState extends State<Home> {
         child: Icon(Icons.add),
       ),
       body: FutureBuilder(
-        initialData: <Note>[],
         future: Provider.of<NoteProvider>(context).getAllNotes(),
         builder: (context, AsyncSnapshot<List<Note>> snapshot) {
           if (snapshot.hasData) {

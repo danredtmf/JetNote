@@ -3,6 +3,10 @@ import 'note.dart';
 import 'note_dao.dart';
 import 'note_database.dart';
 
+/// Берёт базу или создаёт её если не существует.
+///
+/// Для удобной связи имеет методы, которые
+/// обращаются к таким же методам в базе
 class NoteProvider extends ChangeNotifier {
   NoteDatabase? _database;
   late NoteDao noteDao = _database!.noteDao;

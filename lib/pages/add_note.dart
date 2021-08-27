@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import '../pages/edit_note.dart';
 import '../database/note_provider.dart';
 import 'package:provider/provider.dart';
 
+/// Позволяет добавлять [Note] в БД.
+///
+/// Похож на [EditNote] как две капли воды.
 class AddNote extends StatefulWidget {
   const AddNote({Key? key}) : super(key: key);
 
@@ -24,7 +28,8 @@ class _AddNoteState extends State<AddNote> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Provider.of<NoteProvider>(context, listen: false).addNote(header.text, content.text);
+          Provider.of<NoteProvider>(context, listen: false)
+              .addNote(header.text, content.text);
           Navigator.of(context).pop();
         },
         elevation: 0,

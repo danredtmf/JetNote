@@ -3,6 +3,7 @@ import '../database/note.dart';
 import '../database/note_provider.dart';
 import 'package:provider/provider.dart';
 
+/// Редактирует или удаляет [Note] из БД.
 class EditNote extends StatefulWidget {
   final Note note;
 
@@ -36,7 +37,8 @@ class _EditNoteState extends State<EditNote> {
           IconButton(
             onPressed: () {
               setState(() {
-                Provider.of<NoteProvider>(context, listen: false).deleteNote(widget.note);
+                Provider.of<NoteProvider>(context, listen: false)
+                    .deleteNote(widget.note);
                 Navigator.of(context).pop();
               });
             },

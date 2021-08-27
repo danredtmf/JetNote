@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../pages/edit_note.dart';
 import '../database/note.dart';
 
+/// Объект, который хранит в себе [Note],
+/// перенаправляет на экран [EditNote]
 class NoteItem extends StatelessWidget {
   final Note note;
   const NoteItem({Key? key, required this.note}) : super(key: key);
@@ -11,8 +13,7 @@ class NoteItem extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => EditNote(note: note))
-        );
+            MaterialPageRoute(builder: (context) => EditNote(note: note)));
       },
       child: Container(
         padding: EdgeInsets.all(10),

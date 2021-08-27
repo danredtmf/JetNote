@@ -7,6 +7,7 @@ import 'note_dao.dart';
 
 part 'note_database.g.dart';
 
+/// Абстракция базы
 @Database(version: 1, entities: [Note])
 abstract class NoteDatabase extends FloorDatabase {
   NoteDao get noteDao;

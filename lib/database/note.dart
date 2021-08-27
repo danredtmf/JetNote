@@ -1,5 +1,6 @@
 import 'package:floor/floor.dart';
 
+/// Грубо говоря таблица БД
 @Entity(tableName: 'notes')
 class Note {
   @PrimaryKey(autoGenerate: true)

@@ -1,6 +1,8 @@
 import 'package:floor/floor.dart';
 import 'note.dart';
 
+/// Посредник, который обращается к базе через
+/// сгенерированный код в note_database.g.dart
 @dao
 abstract class NoteDao {
   @insert
